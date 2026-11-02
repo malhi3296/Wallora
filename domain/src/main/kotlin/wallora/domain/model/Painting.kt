@@ -1,4 +1,4 @@
-package in.wallora.domain.model
+package wallora.domain.model
 
 /** Paint job attached to a room surface (or a single wall for accent walls). */
 data class PaintJob(

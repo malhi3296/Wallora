@@ -1,6 +1,6 @@
-package in.wallora.calculation
+package wallora.calculation
 
-import in.wallora.domain.model.*
+import wallora.domain.model.*
 import kotlin.math.ceil
 import kotlin.math.round
 
@@ -104,11 +104,10 @@ class CostEngine(
 
         // --- Accessories ----------------------------------------------------
         val totalPaintable = geometry.totalPaintableSqFt
-        val accCost = accessoriesCost(project.accessories.items, totalPaintable, lines)
+        accessoriesCost(project.accessories.items, totalPaintable, lines)
 
         // --- Labour & margin --------------------------------------------------
-        val labourLines = labourLines(project, totalPaintable, jobs.sumOf { /* coats handled via days */ 1 })
-        lines += labourLines
+        lines += labourLines(project, totalPaintable)
 
         // --- Taxes ------------------------------------------------------------
         val materials = lines.filter { it.section in setOf(CostSection.PAINT, CostSection.PRIMER, CostSection.PREP, CostSection.ACCESSORIES) }.sumOf { it.rupees }
@@ -194,7 +193,7 @@ class CostEngine(
         return sum
     }
 
-    private fun labourLines(project: Project, totalSqFt: Double, @Suppress("UNUSED_PARAMETER") coatHint: Int): List<CostLine> {
+    private fun labourLines(project: Project, totalSqFt: Double): List<CostLine> {
         if (project.settings.mode == EstimationMode.DIY) return emptyList()
         val l = project.labour
         val lines = mutableListOf<CostLine>()
@@ -261,11 +260,11 @@ class CostEngine(
     }
 
     private fun buildTimeline(project: Project, paintDays: Int): List<TimelinePhase> {
-        val needsHeavyPrep = project.allRooms.isNotEmpty()
+        val heavyPrep = project.settings.mode == EstimationMode.CONTRACTOR || project.allRooms.isNotEmpty()
         return listOf(
-            TimelinePhase("Surface prep", if (needsHeavyPrep) 2 else 1, "Scraping, crack filling, putty"),
+            TimelinePhase("Surface prep", if (heavyPrep) 2 else 1, "Scraping, crack filling, putty"),
             TimelinePhase("Putty drying", 1, "24 h cure before sanding/primer"),
-            TimelinePhase("Primer", 1, project.settings.let { "" }),
+            TimelinePhase("Primer", 1, "Seal + true colour base"),
             TimelinePhase("Topcoats", paintDays, "Includes drying between coats"),
             TimelinePhase("Touch-ups & cleaning", 1, "Edges, fixtures, handover"),
         )

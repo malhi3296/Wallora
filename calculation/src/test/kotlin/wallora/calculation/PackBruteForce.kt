@@ -1,4 +1,4 @@
-package in.wallora.calculation
+package wallora.calculation
 
 import kotlin.math.abs
 

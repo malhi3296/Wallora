@@ -1,6 +1,6 @@
-package in.wallora.calculation
+package wallora.calculation
 
-import in.wallora.domain.model.*
+import wallora.domain.model.*
 
 /**
  * [4] PackOptimizer — cheapest combination of pack sizes for exactly the litres

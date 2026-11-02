@@ -1,6 +1,6 @@
-package in.wallora.calculation
+package wallora.calculation
 
-import in.wallora.domain.model.*
+import wallora.domain.model.*
 
 /**
  * Loads the bundled seed catalogue (admin-curated fallback prices) without any

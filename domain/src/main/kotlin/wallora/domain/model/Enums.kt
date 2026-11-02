@@ -1,4 +1,4 @@
-package in.wallora.domain.model
+package wallora.domain.model
 
 import kotlin.math.abs
 import kotlin.math.hypot
@@ -75,7 +75,7 @@ enum class VocLevel { LOW, MED, HIGH }
 /** Unit system toggle; the engine always computes in feet internally. */
 enum class LengthUnit { FEET, METRES }
 
-data enum class Currency(val code: String, val symbol: String) { INR("INR", "₹"), USD("USD", "$") }
+enum class Currency(val code: String, val symbol: String) { INR("INR", "₹"), USD("USD", "$") }
 
 /** Immutable 2-D point in **feet** (editor works in feet, converts for display). */
 data class Point2D(val x: Double, val y: Double) {

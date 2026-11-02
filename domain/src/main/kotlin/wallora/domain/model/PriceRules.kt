@@ -1,4 +1,4 @@
-package in.wallora.domain.model
+package wallora.domain.model
 
 /**
  * Pure helpers for freshness + confidence, shared by UI badges and the engine.

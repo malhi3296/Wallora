@@ -1,4 +1,4 @@
-package in.wallora.domain.model
+package wallora.domain.model
 
 /**
  * Catalogue + live-price entities. The app only ever sees normalised offers

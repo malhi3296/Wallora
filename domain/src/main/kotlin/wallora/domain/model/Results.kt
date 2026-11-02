@@ -1,4 +1,4 @@
-package in.wallora.domain.model
+package wallora.domain.model
 
 /** Result types produced by the calculation engine (kept Android-free). */
 

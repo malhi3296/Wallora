@@ -1,6 +1,6 @@
-package in.wallora.calculation
+package wallora.calculation
 
-import in.wallora.domain.model.*
+import wallora.domain.model.*
 
 /**
  * Minimal recursive-descent JSON parser (objects/arrays/strings/numbers/bools).
@@ -82,12 +82,12 @@ internal object SeedJsonParser {
 
         private fun parseObject(): Map<String, Any?> {
             val map = LinkedHashMap<String, Any?>()
-            expect('{'); skipWs()
+            expect("{"); skipWs()
             if (s[i] == '}') { i++; return map }
             while (true) {
                 skipWs()
                 val key = parseString()
-                skipWs(); expect(':')
+                skipWs(); expect(":")
                 map[key] = parseValue()
                 skipWs()
                 when (s[i]) { ',' -> i++; '}' -> { i++; return map }; else -> error("Expected , or } at $i") }
@@ -96,7 +96,7 @@ internal object SeedJsonParser {
 
         private fun parseArray(): List<Any?> {
             val list = mutableListOf<Any?>()
-            expect('['); skipWs()
+            expect("["); skipWs()
             if (s[i] == ']') { i++; return list }
             while (true) {
                 list += parseValue()
@@ -106,7 +106,7 @@ internal object SeedJsonParser {
         }
 
         private fun parseString(): String {
-            expect('"')
+            expect("\"")
             val sb = StringBuilder()
             while (s[i] != '"') {
                 if (s[i] == '\\') {

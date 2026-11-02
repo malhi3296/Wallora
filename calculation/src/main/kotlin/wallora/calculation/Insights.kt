@@ -1,6 +1,6 @@
-package in.wallora.calculation
+package wallora.calculation
 
-import in.wallora.domain.model.*
+import wallora.domain.model.*
 
 /**
  * [6] Insights — save-money tips, Good/Better/Best packages, budget-mode solver
@@ -134,18 +134,21 @@ class Insights(private val engineFactory: () -> CostEngine) {
     ): List<BrandComparisonRow> {
         val brandIds = catalog.values.map { it.brandId }.distinct()
         val rows = brandIds.mapNotNull { brand ->
+            // A brand row is only valid if EVERY non-primer job can be served by
+            // that brand with the same paint type & surface. Otherwise skip —
+            // a partial substitution would silently mislead the comparison.
+            var complete = true
             val substituted = jobsByRoom.mapValues { (_, jobs) ->
                 jobs.map { job ->
                     val current = catalog[job.productId] ?: return@map job
+                    if (current.isPrimer) return@map job
                     val candidate = catalog.values.filter {
-                        it.brandId == brand && it.paintType == current.paintType && job.surface in it.surfaces
-                    }.minByOrNull { priceOf(it) } ?: return@map job
+                        it.brandId == brand && it.paintType == current.paintType &&
+                            !it.isPrimer && job.surface in it.surfaces
+                    }.minByOrNull { priceOf(it) }
+                    if (candidate == null) { complete = false; return@map job }
                     job.copy(productId = candidate.id)
                 }
-            }
-            // Skip brands that can't serve every job (partial substitution would mislead).
-            val complete = substituted.values.flatten().zip(jobsByRoom.values.flatten()).all { (a, b) ->
-                catalog[a.productId]?.brandId == brand || catalog[b.productId]?.let { it.brandId == brand || it.isPrimer } == true
             }
             if (!complete) return@mapNotNull null
             val est = runCatching { engineFactory().estimateHouse(project, substituted) }.getOrNull() ?: return@mapNotNull null

@@ -1,7 +1,13 @@
-package in.wallora.calculation
+package wallora.calculation
 
-import in.wallora.domain.model.*
-import kotlin.test.*
+import wallora.domain.model.*
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
+import kotlin.test.assertFalse
+import kotlin.test.assertNull
+import kotlin.test.assertFailsWith
+import kotlin.test.assertNotNull
+import org.junit.jupiter.api.Test
 
 /**
  * Phase-1 acceptance tests for the calculation engine.
@@ -133,7 +139,10 @@ class CalculationEngineTest {
         val rnd = kotlin.random.Random(42)
         repeat(60) {
             val sizes = listOf(1.0, 4.0, 10.0, 20.0)
-            val priceMap = sizes.associateWith { s -> s * (30.0 + rnd.nextInt(0, 90)).let { base -> base / (1 + 0.12 * sizes.indexOf(it)) } }
+            val priceMap = sizes.associateWith { sz ->
+                val base = sz * (30.0 + rnd.nextInt(0, 90))
+                base / (1.0 + 0.12 * sizes.indexOf(sz))
+            }
             val need = 1.0 + rnd.nextInt(0, 40) + rnd.nextDouble()
             val dpInput = priceMap.entries.map { PackOptimizer.PriceForPack(it.key, it.value) }
             val (dpPurchases, dpCost) = PackOptimizer.optimize(need, dpInput, maxOvershootLitres = 4)!!
@@ -152,7 +161,7 @@ class CalculationEngineTest {
 
     @Test fun optimizerRejectsUnpricedProducts() {
         assertNull(PackOptimizer.optimize(5.0, emptyList()))
-        assertNull(PackOptimizer.optimize(0.0, listOf(PackOptimizer.PriceForPack(1.0, 10.0))))
+        assertTrue(PackOptimizer.optimize(0.0, listOf(PackOptimizer.PriceForPack(1.0, 10.0))) == null)
     }
 
     // ------------------------------------------------------------ rule engine
@@ -241,8 +250,8 @@ class CalculationEngineTest {
     )
 
     private fun engineFor(prices: Map<String, Map<Double, Double>>): CostEngine {
-        val catalog = mapOf("p1" to product()).associateBy { (_, v) -> v.id }
-        return CostEngine(catalog) { p, pack -> prices[p.id]?.get(pack) ?: p.seedPricePerPack[pack] }
+        val catalog = mapOf("p1" to product(), "primer1" to product(id = "primer1").copy(isPrimer = true))
+        return CostEngine(catalog, { p, pack -> prices[p.id]?.get(pack) ?: p.seedPricePerPack[pack] })
     }
 
     @Test fun roomBreakdownSectionsAddUp() {
@@ -309,7 +318,7 @@ class CalculationEngineTest {
                     "ap-tracker-4-in1", coats = 2, colorHex = 0xF2F2F2u.toInt()),
             )
         )
-        val service = EstimateService(catalog) { p, pack -> p.seedPricePerPack[pack] }
+        val service = EstimateService(catalog, { p, pack -> p.seedPricePerPack[pack] })
         val options = service.insights().packageOptions(project, jobsByRoom, catalog)
         assertTrue(options.size >= 3, "should produce Good/Better/Best/Luxury, got ${options.map { it.tier }}")
         val totals = options.sortedBy { it.tier.rank }.map { it.breakdown.totalRupees }
@@ -325,7 +334,7 @@ class CalculationEngineTest {
         val jobs = mapOf("living" to listOf(
             PaintJob("j1", "living", null, SurfaceType.INTERIOR_WALL, WallCondition.PREVIOUSLY_PAINTED, "ap-dreamwash-one-coat", 2)
         ))
-        val service = EstimateService(catalog) { p, pack -> p.seedPricePerPack[pack] }
+        val service = EstimateService(catalog, { p, pack -> p.seedPricePerPack[pack] })
         val insights = service.insights()
         val baseline = service.estimate(project, jobs).houseBreakdown.totalRupees
         val rich = insights.fitBudget(project, jobs, catalog, budgetRupees = baseline * 10)
@@ -343,7 +352,7 @@ class CalculationEngineTest {
         val jobs = mapOf("living" to listOf(
             PaintJob("j1", "living", null, SurfaceType.INTERIOR_WALL, WallCondition.PREVIOUSLY_PAINTED, "ap-dreamwash-one-coat", 2)
         ))
-        val service = EstimateService(catalog) { p, pack -> p.seedPricePerPack[pack] }
+        val service = EstimateService(catalog, { p, pack -> p.seedPricePerPack[pack] })
         val tips = service.insights().saveMoneyTips(project, jobs, catalog)
         assertTrue(tips.isNotEmpty(), "premium→mid downgrade should yield a tip")
         assertTrue(tips.first().savingRupees > 0)
@@ -358,7 +367,7 @@ class CalculationEngineTest {
         val jobs = mapOf("living" to listOf(
             PaintJob("j1", "living", null, SurfaceType.INTERIOR_WALL, WallCondition.PREVIOUSLY_PAINTED, "ap-tracker-4-in1", 2)
         ))
-        val service = EstimateService(catalog) { p, pack -> p.seedPricePerPack[pack] }
+        val service = EstimateService(catalog, { p, pack -> p.seedPricePerPack[pack] })
         val rows = service.insights().compareBrands(project, jobs, catalog)
         assertTrue(rows.isNotEmpty())
         assertEquals(1, rows.count { it.isCheapest })

@@ -1,6 +1,6 @@
-package in.wallora.calculation
+package wallora.calculation
 
-import in.wallora.domain.model.*
+import wallora.domain.model.*
 
 /**
  * Bundles the pure engine behind one façade so ViewModels (Phase 2+) and tests

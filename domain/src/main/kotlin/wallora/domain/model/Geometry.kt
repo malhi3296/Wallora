@@ -1,4 +1,4 @@
-package in.wallora.domain.model
+package wallora.domain.model
 
 /**
  * Geometry entities for the floor-plan editor (Phase 2) — defined now so the
