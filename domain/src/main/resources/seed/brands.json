@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "version": 3,
+    "generatedAt": "2026-11-02T00:00:00Z",
+    "currency": "INR",
+    "note": "Admin-curated fallback prices (MRP-ish, India, Nov 2026). Live backend offers supersede these. Sources & terms: see backend/SOURCES.md"
+  },
+  "brands": [
+    { "id": "asian_paints", "name": "Asian Paints", "country": "IN", "affiliateTag": null },
+    { "id": "berger", "name": "Berger Paints", "country": "IN", "affiliateTag": null },
+    { "id": "nerolac", "name": "Nerolac", "country": "IN", "affiliateTag": null },
+    { "id": "dulux", "name": "Dulux (AkzoNobel)", "country": "IN", "affiliateTag": null },
+    { "id": "indigo", "name": "Indigo Paints", "country": "IN", "affiliateTag": null },
+    { "id": "jsw", "name": "JSW Paints", "country": "IN", "affiliateTag": null },
+    { "id": "birla_opus", "name": "Birla Opus", "country": "IN", "affiliateTag": null },
+    { "id": "custom", "name": "Custom / Local", "country": "IN", "affiliateTag": null }
+  ],
+  "retailers": [
+    { "id": "amazon_in", "name": "Amazon.in", "homepageUrl": "https://www.amazon.in", "sourceKind": "RETAILER_API", "supportsPincode": true },
+    { "id": "flipkart", "name": "Flipkart", "homepageUrl": "https://www.flipkart.com", "sourceKind": "RETAILER_API", "supportsPincode": true },
+    { "id": "asian_paints_store", "name": "Asian Paints SenseMe", "homepageUrl": "https://www.asianpaints.com", "sourceKind": "LICENSED_FEED", "supportsPincode": false },
+    { "id": "local_dealer", "name": "Local dealer (crowdsourced)", "homepageUrl": "", "sourceKind": "CROWDSOURCED", "supportsPincode": true }
+  ],
+  "products": [
+    { "id": "ap-tracker-4-in1", "lineId": "ap-tracker", "brandId": "asian_paints", "name": "Asian Paints Tractor 4-in-1 All Emulsion", "paintType": "EMULSION", "tier": "MID", "surfaces": ["INTERIOR_WALL", "EXTERIOR_WALL"], "coveragePerLitre": 140, "durabilityYears": 5, "washable": true, "vocLevel": "LOW", "extraCoatsForDarkBase": 1, "packs": [1, 4, 10, 20], "seedPricePerPack": { "1": 390, "4": 1450, "10": 3450, "20": 6600 } },
+    { "id": "ap-dreamwash-one-coat", "lineId": "ap-dreamwash", "brandId": "asian_paints", "name": "Asian Paints Dreamwash 1-Coat Cover", "paintType": "PREMIUM_EMULSION", "tier": "PREMIUM", "surfaces": ["INTERIOR_WALL", "ACCENT_WALL", "EXTERIOR_WALL"], "coveragePerLitre": 130, "durabilityYears": 8, "washable": true, "vocLevel": "LOW", "extraCoatsForDarkBase": 1, "packs": [1, 4, 10, 20], "seedPricePerPack": { "1": 700, "4": 2650, "10": 6300, "20": 12200 } },
+    { "id": "ap-royal-shine", "lineId": "ap-royal", "brandId": "asian_paints", "name": "Asian Paints Royal Shine Luxury Sheen", "paintType": "LUXURY_SHEEN", "tier": "LUXURY", "surfaces": ["INTERIOR_WALL", "ACCENT_WALL"], "coveragePerLitre": 125, "durabilityYears": 10, "washable": true, "vocLevel": "LOW", "extraCoatsForDarkBase": 2, "packs": [1, 4, 10], "seedPricePerPack": { "1": 980, "4": 3700, "10": 8900 } },
+    { "id": "ap-distemper-economy", "lineId": "ap-distemper", "brandId": "asian_paints", "name": "Asian Paints Wall Care Distemper", "paintType": "DISTEMPER", "tier": "ECONOMY", "surfaces": ["INTERIOR_WALL", "CEILING"], "coveragePerLitre": 145, "durabilityYears": 3, "washable": false, "vocLevel": "MED", "extraCoatsForDarkBase": 1, "packs": [1, 4, 10, 20], "seedPricePerPack": { "1": 180, "4": 640, "10": 1500, "20": 2850 } },
+    { "id": "ap-weatherfresh-exterior", "lineId": "ap-weatherfresh", "brandId": "asian_paints", "name": "Asian Paints Weatherfresh Exterior", "paintType": "EXTERIOR", "tier": "PREMIUM", "surfaces": ["EXTERIOR_WALL"], "coveragePerLitre": 120, "durabilityYears": 7, "washable": true, "vocLevel": "LOW", "extraCoatsForDarkBase": 1, "packs": [1, 4, 10, 20], "seedPricePerPack": { "1": 750, "4": 2850, "10": 6800, "20": 13000 } },
+    { "id": "ap-primer-walltech", "lineId": "ap-primer", "brandId": "asian_paints", "name": "Asian Paints WallTech Primer", "paintType": "EMULSION", "tier": "MID", "surfaces": ["INTERIOR_WALL", "CEILING", "EXTERIOR_WALL"], "coveragePerLitre": 100, "durabilityYears": 1, "washable": false, "vocLevel": "LOW", "extraCoatsForDarkBase": 0, "packs": [1, 4, 10, 20], "seedPricePerPack": { "1": 280, "4": 1000, "10": 2400, "20": 4500 }, "isPrimer": true },
+
+    { "id": "bg-diamond-breathe-easy", "lineId": "bg-diamond", "brandId": "berger", "name": "Berger Diamond Breathe Easy", "paintType": "PREMIUM_EMULSION", "tier": "PREMIUM", "surfaces": ["INTERIOR_WALL", "ACCENT_WALL"], "coveragePerLitre": 130, "durabilityYears": 8, "washable": true, "vocLevel": "LOW", "extraCoatsForDarkBase": 1, "packs": [1, 4, 10, 20], "seedPricePerPack": { "1": 660, "4": 2500, "10": 5950, "20": 11500 } },
+    { "id": "bg-weatherguard-ultra", "lineId": "bg-weatherguard", "brandId": "berger", "name": "Berger WeatherGuard Ultra Exterior", "paintType": "EXTERIOR", "tier": "PREMIUM", "surfaces": ["EXTERIOR_WALL"], "coveragePerLitre": 120, "durabilityYears": 8, "washable": true, "vocLevel": "LOW", "extraCoatsForDarkBase": 1, "packs": [1, 4, 10, 20], "seedPricePerPack": { "1": 720, "4": 2700, "10": 6500, "20": 12400 } },
+    { "id": "bg-emulsion-mid", "lineId": "bg-classic", "brandId": "berger", "name": "Berger Silk Super Washable", "paintType": "EMULSION", "tier": "MID", "surfaces": ["INTERIOR_WALL", "EXTERIOR_WALL"], "coveragePerLitre": 140, "durabilityYears": 6, "washable": true, "vocLevel": "LOW", "extraCoatsForDarkBase": 1, "packs": [1, 4, 10, 20], "seedPricePerPack": { "1": 380, "4": 1400, "10": 3300, "20": 6300 } },
+    { "id": "bg-distemper-economy", "lineId": "bg-duralone", "brandId": "berger", "name": "Berger Duralone Distemper", "paintType": "DISTEMPER", "tier": "ECONOMY", "surfaces": ["INTERIOR_WALL", "CEILING"], "coveragePerLitre": 145, "durabilityYears": 3, "washable": false, "vocLevel": "MED", "extraCoatsForDarkBase": 1, "packs": [1, 4, 10, 20], "seedPricePerPack": { "1": 170, "4": 600, "10": 1400, "20": 2700 } },
+
+    { "id": "nl-paints-pro-premium", "lineId": "nl-paintspro", "brandId": "nerolac", "name": "Nerolac Paints Pro Premium Emulsion", "paintType": "PREMIUM_EMULSION", "tier": "PREMIUM", "surfaces": ["INTERIOR_WALL", "ACCENT_WALL", "EXTERIOR_WALL"], "coveragePerLitre": 130, "durabilityYears": 7, "washable": true, "vocLevel": "LOW", "extraCoatsForDarkBase": 1, "packs": [1, 4, 10, 20], "seedPricePerPack": { "1": 640, "4": 2400, "10": 5750, "20": 11100 } },
+    { "id": "nl-excel-emulsion", "lineId": "nl-excel", "brandId": "nerolac", "name": "Nerolac Excel Matt Emulsion", "paintType": "EMULSION", "tier": "MID", "surfaces": ["INTERIOR_WALL", "EXTERIOR_WALL"], "coveragePerLitre": 140, "durabilityYears": 5, "washable": true, "vocLevel": "LOW", "extraCoatsForDarkBase": 1, "packs": [1, 4, 10, 20], "seedPricePerPack": { "1": 370, "4": 1370, "10": 3250, "20": 6200 } },
+    { "id": "nl-economy-distemper", "lineId": "nl-novacyl", "brandId": "nerolac", "name": "Nerolac Novacyl Distemper", "paintType": "DISTEMPER", "tier": "ECONOMY", "surfaces": ["INTERIOR_WALL", "CEILING"], "coveragePerLitre": 145, "durabilityYears": 3, "washable": false, "vocLevel": "MED", "extraCoatsForDarkBase": 1, "packs": [1, 4, 10, 20], "seedPricePerPack": { "1": 165, "4": 585, "10": 1380, "20": 2650 } },
+
+    { "id": "dx-easiest-clean", "lineId": "dx-easiestclean", "brandId": "dulux", "name": "Dulux EasiestClean+ Antistain", "paintType": "PREMIUM_EMULSION", "tier": "PREMIUM", "surfaces": ["INTERIOR_WALL", "ACCENT_WALL"], "coveragePerLitre": 128, "durabilityYears": 8, "washable": true, "vocLevel": "LOW", "extraCoatsForDarkBase": 1, "packs": [1, 4, 10, 20], "seedPricePerPack": { "1": 690, "4": 2600, "10": 6200, "20": 11900 } },
+    { "id": "dx-weathershield", "lineId": "dx-weathershield", "brandId": "dulux", "name": "Dulux Weathershield XPert Protect", "paintType": "EXTERIOR", "tier": "LUXURY", "surfaces": ["EXTERIOR_WALL"], "coveragePerLitre": 120, "durabilityYears": 10, "washable": true, "vocLevel": "LOW", "extraCoatsForDarkBase": 1, "packs": [1, 4, 10], "seedPricePerPack": { "1": 850, "4": 3200, "10": 7600 } },
+    { "id": "dx-emulsion-mid", "lineId": "dx-vinil", "brandId": "dulux", "name": "Dulux Vinil Interior Emulsion", "paintType": "EMULSION", "tier": "MID", "surfaces": ["INTERIOR_WALL", "EXTERIOR_WALL"], "coveragePerLitre": 140, "durabilityYears": 5, "washable": true, "vocLevel": "LOW", "extraCoatsForDarkBase": 1, "packs": [1, 4, 10, 20], "seedPricePerPack": { "1": 385, "4": 1420, "10": 3380, "20": 6450 } },
+
+    { "id": "in-sparkle-premium", "lineId": "in-sparkle", "brandId": "indigo", "name": "Indigo Sparkle Premium Emulsion", "paintType": "PREMIUM_EMULSION", "tier": "PREMIUM", "surfaces": ["INTERIOR_WALL", "ACCENT_WALL", "EXTERIOR_WALL"], "coveragePerLitre": 130, "durabilityYears": 7, "washable": true, "vocLevel": "LOW", "extraCoatsForDarkBase": 1, "packs": [1, 4, 10, 20], "seedPricePerPack": { "1": 610, "4": 2280, "10": 5450, "20": 10500 } },
+    { "id": "in-dreamy-mid", "lineId": "in-dreamy", "brandId": "indigo", "name": "Indigo Dreamy Perfection Emulsion", "paintType": "EMULSION", "tier": "MID", "surfaces": ["INTERIOR_WALL", "EXTERIOR_WALL"], "coveragePerLitre": 140, "durabilityYears": 5, "washable": true, "vocLevel": "LOW", "extraCoatsForDarkBase": 1, "packs": [1, 4, 10, 20], "seedPricePerPack": { "1": 355, "4": 1320, "10": 3150, "20": 6000 } },
+
+    { "id": "jsw-glow-petals-premium", "lineId": "jsw-glow", "brandId": "jsw", "name": "JSW Glow Petals Premium Emulsion", "paintType": "PREMIUM_EMULSION", "tier": "PREMIUM", "surfaces": ["INTERIOR_WALL", "ACCENT_WALL"], "coveragePerLitre": 130, "durabilityYears": 7, "washable": true, "vocLevel": "LOW", "extraCoatsForDarkBase": 1, "packs": [1, 4, 10, 20], "seedPricePerPack": { "1": 600, "4": 2250, "10": 5350, "20": 10300 } },
+    { "id": "jsw-economy-distemper", "lineId": "jsw-insulated", "brandId": "jsw", "name": "JSW Eco Shield Distemper", "paintType": "DISTEMPER", "tier": "ECONOMY", "surfaces": ["INTERIOR_WALL", "CEILING"], "coveragePerLitre": 145, "durabilityYears": 3, "washable": false, "vocLevel": "LOW", "extraCoatsForDarkBase": 1, "packs": [1, 4, 10, 20], "seedPricePerPack": { "1": 160, "4": 570, "10": 1350, "20": 2600 } },
+
+    { "id": "bo-everyday-mid", "lineId": "bo-everyday", "brandId": "birla_opus", "name": "Birla Opus Everyday Emulsion", "paintType": "EMULSION", "tier": "MID", "surfaces": ["INTERIOR_WALL", "EXTERIOR_WALL"], "coveragePerLitre": 140, "durabilityYears": 5, "washable": true, "vocLevel": "LOW", "extraCoatsForDarkBase": 1, "packs": [1, 4, 10, 20], "seedPricePerPack": { "1": 345, "4": 1290, "10": 3050, "20": 5850 } },
+    { "id": "bo-platinum-premium", "lineId": "bo-platinum", "brandId": "birla_opus", "name": "Birla Opus Platinum Shimmer", "paintType": "PREMIUM_EMULSION", "tier": "PREMIUM", "surfaces": ["INTERIOR_WALL", "ACCENT_WALL"], "coveragePerLitre": 130, "durabilityYears": 8, "washable": true, "vocLevel": "LOW", "extraCoatsForDarkBase": 1, "packs": [1, 4, 10, 20], "seedPricePerPack": { "1": 650, "4": 2450, "10": 5850, "20": 11250 } },
+
+    { "id": "generic-enamel-door", "lineId": "custom-enamel", "brandId": "custom", "name": "Generic Oil Enamel (doors/grills)", "paintType": "ENAMEL", "tier": "MID", "surfaces": ["DOOR", "WOODWORK", "WINDOW_GRILL", "METALWORK"], "coveragePerLitre": 110, "durabilityYears": 3, "washable": true, "vocLevel": "HIGH", "extraCoatsForDarkBase": 1, "packs": [1, 4], "seedPricePerPack": { "1": 320, "4": 1180 } },
+    { "id": "generic-waterproof", "lineId": "custom-waterproof", "brandId": "custom", "name": "Acrylic Waterproof Coating", "paintType": "WATERPROOF", "tier": "MID", "surfaces": ["EXTERIOR_WALL"], "coveragePerLitre": 60, "durabilityYears": 5, "washable": false, "vocLevel": "LOW", "extraCoatsForDarkBase": 0, "packs": [1, 4, 10, 20], "seedPricePerPack": { "1": 450, "4": 1700, "10": 4000, "20": 7600 } },
+    { "id": "generic-texture-base", "lineId": "custom-texture", "brandId": "custom", "name": "Texture Base Coat", "paintType": "TEXTURE", "tier": "PREMIUM", "surfaces": ["INTERIOR_WALL", "EXTERIOR_WALL", "ACCENT_WALL"], "coveragePerLitre": 35, "durabilityYears": 8, "washable": true, "vocLevel": "LOW", "extraCoatsForDarkBase": 0, "packs": [1, 4, 10], "seedPricePerPack": { "1": 900, "4": 3400, "10": 8200 } }
+  ],
+  "colors": [
+    { "id": "ap-white-pure", "brandId": "asian_paints", "name": "Pure White", "hex": 16253786, "code": "AP 1001", "luminanceWeight": 0.95 },
+    { "id": "ap-ice-silver", "brandId": "asian_paints", "name": "Ice Silver", "hex": 15130318, "code": "AP 2345", "luminanceWeight": 0.85 },
+    { "id": "ap-teal-wave", "brandId": "asian_paints", "name": "Teal Wave", "hex": 2170801, "code": "AP 8765", "luminanceWeight": 0.35, "trending": true },
+    { "id": "ap-coral-pop", "brandId": "asian_paints", "name": "Coral Pop", "hex": 16739159, "code": "AP 5612", "luminanceWeight": 0.55, "trending": true },
+    { "id": "ap-indigo-night", "brandId": "asian_paints", "name": "Indigo Night", "hex": 2739942, "code": "AP 9902", "luminanceWeight": 0.18 },
+    { "id": "bg-earthen-clay", "brandId": "berger", "name": "Earthen Clay", "hex": 12617572, "code": "BG 4521", "luminanceWeight": 0.45 },
+    { "id": "bg-misty-morning", "brandId": "berger", "name": "Misty Morning", "hex": 14802889, "code": "BG 1102", "luminanceWeight": 0.88 },
+    { "id": "nl-sage-whisper", "brandId": "nerolac", "name": "Sage Whisper", "hex": 11312044, "code": "NL 3310", "luminanceWeight": 0.62, "trending": true },
+    { "id": "dx-charcoal-storm", "brandId": "dulux", "name": "Charcoal Storm", "hex": 4408435, "code": "DX 7788", "luminanceWeight": 0.15 }
+  ]
+}
